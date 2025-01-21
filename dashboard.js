@@ -181,6 +181,7 @@ async function fetchXPData(userId) {
     try {
         const data = await executeGraphQLQuery(XP_QUERY(userId));
         displayXPData(data.transaction_aggregate.aggregate.sum.amount);
+        console.log(data.transaction_aggregate.aggregate.sum.amount);
     } catch (error) {
         handleError(error, 'xp-info');
     }
@@ -191,6 +192,7 @@ async function fetchAuditData() {
     try {
         const data = await executeGraphQLQuery(AUDIT_RATIO_QUERY);
         displayAuditRatio(data.user[0]);
+        console.log(data.user[0]);
     } catch (error) {
         handleError(error, 'audit-ratio');
     }
@@ -207,6 +209,7 @@ async function fetchSkillsData() {
             return acc;
         }, []);
         displaySkillsRadar(uniqueSkills.slice(0, 6));
+        console.log(uniqueSkills.slice(0, 6));
     } catch (error) {
         handleError(error, 'skills-container');
     }
