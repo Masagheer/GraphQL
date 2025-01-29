@@ -10,19 +10,6 @@ body {
     min-height: 100vh;
 }
 
-#tech-skills-container text{
-    transform: translateY(40px);
-    font-size: 8px;
-    color: white !important;
-    fill: white;
-    width: 70%;
-}
-
-#tech-skills-container rect{
-    fill: #0056b3;
-    width: 50px;
-}
-
 .skill-value-container{
     margin-left: 50px;
     font-size: 11px;
