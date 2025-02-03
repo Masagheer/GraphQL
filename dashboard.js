@@ -1,3 +1,8 @@
+import { testMessage } from './utils.js';
+
+// Log the test message
+console.log(testMessage); 
+
 // for the basic info
 const BASIC_INFO_QUERY = `
     query {
