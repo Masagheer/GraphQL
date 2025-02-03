@@ -1,3 +1,5 @@
+export const testMessage = "Hello from auth.js!";
+
 class Auth {
     constructor() {
         this.baseUrl = 'https://learn.reboot01.com/api';
