@@ -1,8 +1,3 @@
-import { capitalizeFirstLetter } from './utils.js';
-
-// Example usage
-console.log(capitalizeFirstLetter('hello')); // Should log "Hello"
-
 // for the basic info
 const BASIC_INFO_QUERY = `
     query {
