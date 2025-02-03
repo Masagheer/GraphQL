@@ -1,4 +1,7 @@
-console.log("hello")
+import { testMessage } from './auth.js';
+
+// Log the test message
+console.log(testMessage);
 
 // for the basic info
 const BASIC_INFO_QUERY = `
