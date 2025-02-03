@@ -1,4 +1,4 @@
-
+import { capitalizeFirstLetter } from 'utils.js';
 
 // for the basic info
 const BASIC_INFO_QUERY = `
