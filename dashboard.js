@@ -1,3 +1,5 @@
+console.log("hello")
+
 // for the basic info
 const BASIC_INFO_QUERY = `
     query {
