@@ -1,5 +1,8 @@
 import { capitalizeFirstLetter } from './utils.js';
 
+console.log('dashboard.js loaded');
+console.log(capitalizeFirstLetter('test'));
+
 // for the basic info
 const BASIC_INFO_QUERY = `
     query {
