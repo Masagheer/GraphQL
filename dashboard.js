@@ -1,7 +1,4 @@
-import { testMessage } from './utils.js';
-
-// Log the test message
-console.log(testMessage); 
+import { capitalizeFirstLetter } from './utils.js';
 
 // for the basic info
 const BASIC_INFO_QUERY = `
