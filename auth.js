@@ -73,5 +73,3 @@ class Auth {
 document.addEventListener('DOMContentLoaded', () => {
     window.auth = new Auth();
 }); 
-
-export const testMessage = "Hello from auth.js!";
