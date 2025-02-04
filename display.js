@@ -220,3 +220,29 @@ export function displaySkillsRadar(skills) {
     container.innerHTML += values;
 }
 
+export function createTechSkillsBarChart(skills, maxAmount) {
+    const barWidth = 50;
+    const gap = 10;
+    const height = 300;
+    const scale = height / maxAmount;
+
+    // Create the SVG element
+    const svgWidth = skills.length * (barWidth + gap);
+    let svg = `<svg width="${svgWidth}" height="${height}" viewBox="0 0 ${svgWidth} ${height}">`;
+
+    // Generate bars
+    skills.forEach((skill, i) => {
+        const barHeight = skill.amount * scale;
+        const x = i * (barWidth + gap);
+        const y = height - barHeight;
+
+        svg += `
+            <rect x="${x}" y="${y}" width="${barWidth}" height="${barHeight}" fill="#0186FE"/>
+            <text x="${x + barWidth / 2}" y="${y - 5}" text-anchor="middle" fill="#000">${skill.skill}</text>
+            <text x="${x + barWidth / 2}" y="${y - 20}" text-anchor="middle" fill="#000">${skill.amount}</text>
+        `;
+    });
+
+    svg += `</svg>`;
+    return svg;
+}
