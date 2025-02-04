@@ -111,3 +111,5 @@ export async function fetchTechSkills() {
         document.getElementById('tech-skills-container').innerHTML = 'Error loading tech skills';
     }
 }
+
+export const barSvg = createTechSkillsBarChart(skillsData, maxValue);
