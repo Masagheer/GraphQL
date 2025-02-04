@@ -95,12 +95,6 @@ const TECH_SKILLS_QUERY = `
     }
 `;
 
-// for the campus name
-function capitalizeFirstLetter(string) {
-    if (!string) return 'N/A';
-    return string.charAt(0).toUpperCase() + string.slice(1).toLowerCase();
-}
-
 // for the graphql request
 async function executeGraphQLQuery(query) {
     const token = auth.getToken();
