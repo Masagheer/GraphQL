@@ -1,37 +1,96 @@
-console.log('utils.js loaded');
+console.log('queries.js loaded');
 
-export function capitalizeFirstLetter(string) {
-    if (!string) return 'N/A';
-    return string.charAt(0).toUpperCase() + string.slice(1).toLowerCase();
-}
-
-// for the graphql request
-export async function executeGraphQLQuery(query) {
-    const token = auth.getToken();
-    if (!token) {
-        throw new Error('No authentication token available');
+// for the basic info
+export const BASIC_INFO_QUERY = `
+    query {
+        user {
+            id
+            login
+            firstName
+            lastName
+            email
+            campus
+        }
     }
+`;
 
-    const response = await fetch('https://learn.reboot01.com/api/graphql-engine/v1/graphql', {
-        method: 'POST',
-        headers: {
-            'Content-Type': 'application/json',
-            'Authorization': token
-        },
-        body: JSON.stringify({ query })
-    });
-
-    if (!response.ok) {
-        const errorText = await response.text();
-        console.error('Server response:', errorText);
-        throw new Error('Failed to fetch data');
+// for the last projects
+export const LAST_PROJECTS_QUERY = `
+    {
+        transaction(
+            where: {
+                type: { _eq: "xp" }
+                _and: [
+                    { path: { _like: "/bahrain/bh-module%" } },
+                    { path: { _nlike: "/bahrain/bh-module/checkpoint%" } },
+                    { path: { _nlike: "/bahrain/bh-module/piscine%" } }
+                ]
+            }
+            order_by: { createdAt: desc }
+            limit: 4
+        ) {
+            object {
+                type
+                name
+            }
+        }
     }
+`;
 
-    const result = await response.json();
-    if (result.errors) {
-        console.error('GraphQL Errors:', result.errors);
-        throw new Error(result.errors[0].message);
+// for the xp
+export const XP_QUERY = (userId) => `
+    query Transaction_aggregate {
+        transaction_aggregate(
+            where: {
+                event: { path: { _eq: "/bahrain/bh-module" } }
+                type: { _eq: "xp" }
+                userId: { _eq: "${userId}" }
+            }
+        ) {
+            aggregate {
+                sum {
+                    amount
+                }
+            }
+        }
     }
-
-    return result.data;
-}
+`;
+// for the audit ratio
+export const AUDIT_RATIO_QUERY = `
+    {
+        user {
+            totalUp
+            totalDown
+            auditRatio
+        }
+    }
+`;
+// for the best skills
+export const SKILLS_QUERY = `
+    {
+        user {
+            transactions(
+                where: {
+                    type: {_ilike: "%skill%"}
+                },
+                order_by: {amount: desc}
+            ) {
+                type
+                amount
+            }
+        }
+    }
+`;
+// for the tech skills
+export const TECH_SKILLS_QUERY = `
+    {
+        user {
+            transactions(where: {
+                type: {_ilike: "%skill%"}
+            }) {
+                type
+                amount
+            }
+        }
+    }
+`;
