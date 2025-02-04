@@ -552,40 +552,40 @@ async function fetchTechSkills() {
 // }
 
 
-async function fetchTechSkills() {
-    try {
-        const response = await executeGraphQLQuery(TECH_SKILLS_QUERY);
-        const transactions = response.user[0].transactions;
+// async function fetchTechSkills() {
+//     try {
+//         const response = await executeGraphQLQuery(TECH_SKILLS_QUERY);
+//         const transactions = response.user[0].transactions;
 
-        const techSkills = {
-            'go': 'skill_go',
-            'javascript': 'skill_js',
-            'html': 'skill_html',
-            'css': 'skill_css',
-            'unix': 'skill_unix',
-            'docker': 'skill_docker',
-            'sql': 'skill_sql'
-        };
+//         const techSkills = {
+//             'go': 'skill_go',
+//             'javascript': 'skill_js',
+//             'html': 'skill_html',
+//             'css': 'skill_css',
+//             'unix': 'skill_unix',
+//             'docker': 'skill_docker',
+//             'sql': 'skill_sql'
+//         };
 
-        const skillsData = Object.entries(techSkills).map(([key, skillType]) => {
-            const skill = transactions.find(t => t.type === skillType);
-            return {
-                skill: key.toUpperCase(),
-                amount: skill ? skill.amount : 0
-            };
-        });
+//         const skillsData = Object.entries(techSkills).map(([key, skillType]) => {
+//             const skill = transactions.find(t => t.type === skillType);
+//             return {
+//                 skill: key.toUpperCase(),
+//                 amount: skill ? skill.amount : 0
+//             };
+//         });
 
-        const maxValue = Math.max(...skillsData.map(s => s.amount));
-        const barSvg = createTechSkillsBarChart(skillsData, maxValue);
+//         const maxValue = Math.max(...skillsData.map(s => s.amount));
+//         const barSvg = createTechSkillsBarChart(skillsData, maxValue);
 
-        // Update the main SVG container
-        const container = document.getElementById('tech-skills-container');
-        container.innerHTML = barSvg;
-    } catch (error) {
-        console.error('Error fetching tech skills:', error);
-        document.getElementById('tech-skills-container').innerHTML = 'Error loading tech skills';
-    }
-}
+//         // Update the main SVG container
+//         const container = document.getElementById('tech-skills-container');
+//         container.innerHTML = barSvg;
+//     } catch (error) {
+//         console.error('Error fetching tech skills:', error);
+//         document.getElementById('tech-skills-container').innerHTML = 'Error loading tech skills';
+//     }
+// }
 
 function createTechSkillsBarChart(skills, maxAmount) {
     const barWidth = 50;
