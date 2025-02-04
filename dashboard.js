@@ -106,5 +106,5 @@ function createTechSkillsRadar(skills, maxAmount) {
     `;
 }
 
-const barSvg = createTechSkillsBarChart(skillsData, maxValue);
+
 container.innerHTML = barSvg; // Replace the radar chart with the bar chart
