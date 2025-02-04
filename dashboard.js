@@ -1,7 +1,6 @@
 import { executeGraphQLQuery, capitalizeFirstLetter } from './utils.js';
 import { BASIC_INFO_QUERY, LAST_PROJECTS_QUERY, XP_QUERY, AUDIT_RATIO_QUERY, SKILLS_QUERY, TECH_SKILLS_QUERY } from './queries.js';
 import { displayUserData, displayLastProjects, displayXPData, displayAuditRatio, displaySkillsRadar, createTechSkillsBarChart } from './display.js';
-import { fetchUserData, fetchLastProjects, fetchXPData, fetchAuditData, fetchSkillsData, fetchTechSkills } from './fetchData.js';
 
 // for the dashboard
 document.addEventListener('DOMContentLoaded', async () => {
