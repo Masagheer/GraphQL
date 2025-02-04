@@ -1,8 +1,5 @@
 import { capitalizeFirstLetter } from './utils.js';
 
-console.log('dashboard.js loaded');
-console.log(capitalizeFirstLetter('test'));
-
 // for the basic info
 const BASIC_INFO_QUERY = `
     query {
@@ -99,6 +96,10 @@ const TECH_SKILLS_QUERY = `
 `;
 
 // for the campus name
+function capitalizeFirstLetter(string) {
+    if (!string) return 'N/A';
+    return string.charAt(0).toUpperCase() + string.slice(1).toLowerCase();
+}
 
 // for the graphql request
 async function executeGraphQLQuery(query) {
