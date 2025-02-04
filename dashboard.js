@@ -21,7 +21,7 @@ const LAST_PROJECTS_QUERY = `
                 _and: [
                     { path: { _like: "/bahrain/bh-module%" } },
                     { path: { _nlike: "/bahrain/bh-module/checkpoint%" } },
-                    { path: { _nlike: "/bahrain/bh-module/piscine-js%" } }
+                    { path: { _nlike: "/bahrain/bh-module/piscine%" } }
                 ]
             }
             order_by: { createdAt: desc }
