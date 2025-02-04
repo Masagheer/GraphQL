@@ -1,3 +1,5 @@
+console.log('queries.js loaded');
+
 // for the basic info
 export const BASIC_INFO_QUERY = `
     query {
