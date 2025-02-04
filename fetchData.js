@@ -14,7 +14,8 @@ import {
     displayLastProjects, 
     displayXPData, 
     displayAuditRatio, 
-    displaySkillsRadar 
+    displaySkillsRadar,
+    createTechSkillsBarChart
 } from './display.js';
 
 // Fetch and display user data
