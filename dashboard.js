@@ -1,36 +1,5 @@
-import { capitalizeFirstLetter } from './utils.js';
+import { executeGraphQLQuery, capitalizeFirstLetter } from './utils.js';
 import { BASIC_INFO_QUERY, LAST_PROJECTS_QUERY, XP_QUERY, AUDIT_RATIO_QUERY, SKILLS_QUERY, TECH_SKILLS_QUERY } from './queries.js';
-
-// for the graphql request
-async function executeGraphQLQuery(query) {
-    const token = auth.getToken();
-    if (!token) {
-        throw new Error('No authentication token available');
-    }
-
-    const response = await fetch('https://learn.reboot01.com/api/graphql-engine/v1/graphql', {
-        method: 'POST',
-        headers: {
-            'Content-Type': 'application/json',
-            'Authorization': token
-        },
-        body: JSON.stringify({ query })
-    });
-
-    if (!response.ok) {
-        const errorText = await response.text();
-        console.error('Server response:', errorText);
-        throw new Error('Failed to fetch data');
-    }
-
-    const result = await response.json();
-    if (result.errors) {
-        console.error('GraphQL Errors:', result.errors);
-        throw new Error(result.errors[0].message);
-    }
-
-    return result.data;
-}
 
 // for the dashboard
 document.addEventListener('DOMContentLoaded', async () => {
